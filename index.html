@@ -59,6 +59,8 @@
 
 <script>
     const terminal = document.getElementById('terminal');
+    const commandHistory = [];
+    let historyIndex = -1;
 
     const commands = {
         help: "Available commands: help, about, experience, education, contact, clear",
@@ -89,8 +91,23 @@
         input.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') {
                 executeCommand(input.value);
+                commandHistory.push(input.value);
+                historyIndex = commandHistory.length;
                 input.disabled = true;
                 createPrompt();
+            } else if (e.key === 'ArrowUp') {
+                if (historyIndex > 0) {
+                    historyIndex--;
+                    input.value = commandHistory[historyIndex];
+                }
+            } else if (e.key === 'ArrowDown') {
+                if (historyIndex < commandHistory.length - 1) {
+                    historyIndex++;
+                    input.value = commandHistory[historyIndex];
+                } else {
+                    historyIndex = commandHistory.length;
+                    input.value = '';
+                }
             }
         });
 
@@ -112,21 +129,22 @@
         }
     }
 
-    document.addEventListener('click', () => {
-        const inputs = document.querySelectorAll('.prompt input');
-        if(inputs.length > 0) {
-            inputs[inputs.length - 1].focus();
-        }
-    });
-
-    document.addEventListener('keydown', () => {
-        const inputs = document.querySelectorAll('.prompt input');
-        if(inputs.length > 0) {
-            inputs[inputs.length - 1].focus();
-        }
-    });
-
     window.onload = createPrompt;
+
+    document.body.addEventListener('click', () => {
+        const inputs = document.querySelectorAll('input:not([disabled])');
+        if(inputs.length > 0) {
+            inputs[inputs.length - 1].focus();
+        }
+    });
+
+    document.body.addEventListener('keydown', () => {
+        const inputs = document.querySelectorAll('input:not([disabled])');
+        if(inputs.length > 0) {
+            inputs[inputs.length - 1].focus();
+        }
+    });
+
 </script>
 </body>
 </html>
