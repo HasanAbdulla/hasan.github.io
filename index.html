@@ -3,25 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Pages Website</title>
+    <title>Terminal Style Website</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            text-align: center;
-            background-color: #f5f7fa;
-            margin-top: 50px;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #00FF00;
+            font-family: monospace;
+            height: 100vh;
+            overflow: hidden;
         }
-        h1 {
-            color: #333;
+
+        #terminal {
+            padding: 20px;
+            overflow-y: auto;
+            height: 100%;
+            box-sizing: border-box;
         }
-        p {
-            color: #555;
+
+        .prompt {
+            display: flex;
         }
+
+        .prompt span {
+            margin-right: 5px;
+        }
+
+        input {
+            background: transparent;
+            border: none;
+            color: #00FF00;
+            outline: none;
+            flex-grow: 1;
+            font-family: monospace;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #00FF00;
+        }
+
     </style>
 </head>
 <body>
-    <h1>Welcome to My Static Website!</h1>
-    <p>This is a simple static website hosted for free on GitHub Pages.</p>
+<div id="terminal">
+    <div>Welcome to Terminal. Type 'help' for commands.</div>
+</div>
+
+<script>
+    const terminal = document.getElementById('terminal');
+
+    const commands = {
+        help: "Available commands: help, about, projects, clear",
+        about: "This is a terminal-style website created using HTML, CSS, and JavaScript.",
+        projects: "Current projects: AI Assistant, Portfolio Website, Data Analysis Tool.",
+        clear: ""
+    };
+
+    function createPrompt() {
+        const promptDiv = document.createElement('div');
+        promptDiv.className = 'prompt';
+
+        const span = document.createElement('span');
+        span.textContent = 'user@terminal:~$';
+
+        const input = document.createElement('input');
+        input.type = 'text';
+
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                executeCommand(input.value);
+                input.disabled = true;
+                createPrompt();
+            }
+        });
+
+        promptDiv.appendChild(span);
+        promptDiv.appendChild(input);
+        terminal.appendChild(promptDiv);
+        input.focus();
+
+        terminal.scrollTop = terminal.scrollHeight;
+    }
+
+    function executeCommand(cmd) {
+        const output = document.createElement('div');
+        if (cmd === 'clear') {
+            terminal.innerHTML = '';
+        } else if (commands[cmd]) {
+            output.textContent = commands[cmd];
+        } else {
+            output.textContent = `Command not found: ${cmd}`;
+        }
+
+        if (cmd !== 'clear') {
+            terminal.appendChild(output);
+        }
+    }
+
+    createPrompt();
+</script>
 </body>
 </html>
