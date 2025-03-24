@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1337 Terminal Website</title>
+    <title>Hasan's Terminal</title>
     <style>
         body {
             margin: 0;
@@ -54,16 +54,18 @@
 </head>
 <body>
 <div id="terminal">
-    <div>Welcome to 1337 Terminal. Type 'help' for commands.</div>
+    <div>Welcome to Hasan's Terminal. Type 'help' for commands.</div>
 </div>
 
 <script>
     const terminal = document.getElementById('terminal');
 
     const commands = {
-        help: "Available commands: help, about, projects, clear",
-        about: "This is a 1337-style terminal website created using HTML, CSS, and JavaScript.",
-        projects: "Current projects: AI Assistant, Portfolio Website, Data Analysis Tool.",
+        help: "Available commands: help, about, experience, education, contact, clear",
+        about: "Hasan Abdulla is an Information Technology Engineer and a Ph.D. candidate in Computer and Information Sciences specializing in machine learning.",
+        experience: "IT Engineer at a Primary Healthcare Centre in Bahrain, Lecturer at a university teaching Information Technology.",
+        education: "Ph.D. candidate in Computer and Information Sciences, specialized in machine learning.",
+        contact: "Email: h@san.bh | Website: hasanabdulla.com",
         clear: ""
     };
 
@@ -72,7 +74,7 @@
         promptDiv.className = 'prompt';
 
         const span = document.createElement('span');
-        span.textContent = 'user@1337:~$';
+        span.textContent = 'hasan@terminal:~$';
 
         const input = document.createElement('input');
         input.type = 'text';
