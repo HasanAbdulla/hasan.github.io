@@ -3,13 +3,13 @@
 <head>
     <meta charset=\"UTF-8\">
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
-    <title>1337 Terminal Website</title>
+    <title>Terminal Style Website</title>
     <style>
         body {
             margin: 0;
             padding: 0;
-            background-color: #121212;
-            color: #33FF33;
+            background-color: #011627;
+            color: #d6deeb;
             font-family: monospace;
             height: 100vh;
             overflow: hidden;
@@ -28,12 +28,13 @@
 
         .prompt span {
             margin-right: 5px;
+            color: #7fdbca;
         }
 
         input {
             background: transparent;
             border: none;
-            color: #33FF33;
+            color: #addb67;
             outline: none;
             flex-grow: 1;
             font-family: monospace;
@@ -44,24 +45,24 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: #33FF33;
+            background: #7fdbca;
         }
 
     </style>
 </head>
 <body>
 <div id=\"terminal\">
-    <div>W31c0m3 70 1337 73rm1n4l. 7yp3 'h31p' f0r c0mm4ndz.</div>
+    <div>Welcome to Terminal. Type 'help' for commands.</div>
 </div>
 
 <script>
     const terminal = document.getElementById('terminal');
 
     const commands = {
-        h31p: \"4v41l4bl3 c0mm4ndz: h31p, 4b0u7, pr0j3c7z, cl34r\",
-        "4b0u7": \"7h1z 15 4 1337 73rm1n4l-57yl3 w3b5173 cr3473d u51n9 H7ML, C55, 4nd J4v45cr1p7.\",
-        pr0j3c7z: \"Curr3n7 pr0j3c7z: 41 4551574n7, P0r7f0l10 W3b5173, D474 4n4ly515 700l.\",
-        cl34r: \"\"
+        help: \"Available commands: help, about, projects, clear\",
+        about: \"This is a terminal-style website created using HTML, CSS, and JavaScript.\",
+        projects: \"Current projects: AI Assistant, Portfolio Website, Data Analysis Tool.\",
+        clear: \"\"
     };
 
     function createPrompt() {
@@ -69,7 +70,7 @@
         promptDiv.className = 'prompt';
 
         const span = document.createElement('span');
-        span.textContent = 'u53r@1337:~$';
+        span.textContent = 'user@terminal:~$';
 
         const input = document.createElement('input');
         input.type = 'text';
@@ -92,15 +93,15 @@
 
     function executeCommand(cmd) {
         const output = document.createElement('div');
-        if (cmd === 'cl34r') {
+        if (cmd === 'clear') {
             terminal.innerHTML = '';
         } else if (commands[cmd]) {
             output.textContent = commands[cmd];
         } else {
-            output.textContent = `C0mm4nd n07 f0und: ${cmd}`;
+            output.textContent = `Command not found: ${cmd}`;
         }
 
-        if (cmd !== 'cl34r') {
+        if (cmd !== 'clear') {
             terminal.appendChild(output);
         }
     }
