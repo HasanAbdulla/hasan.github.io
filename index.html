@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terminal Style Website</title>
+    <title>1337 Terminal Website</title>
     <style>
         body {
             margin: 0;
             padding: 0;
-            background-color: #011627;
-            color: #d6deeb;
+            background-color: #1d1f21;
+            color: #c5c8c6;
             font-family: monospace;
             height: 100vh;
             overflow: hidden;
@@ -29,17 +29,17 @@
 
         .prompt span {
             margin-right: 5px;
-            color: #7fdbca;
+            color: #81a2be;
         }
 
         .prompt input {
             background: transparent;
             border: none;
-            color: #addb67;
+            color: #b5bd68;
             outline: none;
             flex-grow: 1;
             font-family: monospace;
-            caret-color: #addb67;
+            caret-color: #b5bd68;
         }
 
         ::-webkit-scrollbar {
@@ -47,14 +47,14 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: #7fdbca;
+            background: #81a2be;
         }
 
     </style>
 </head>
 <body>
 <div id="terminal">
-    <div>Welcome to Terminal. Type 'help' for commands.</div>
+    <div>Welcome to 1337 Terminal. Type 'help' for commands.</div>
 </div>
 
 <script>
@@ -62,7 +62,7 @@
 
     const commands = {
         help: "Available commands: help, about, projects, clear",
-        about: "This is a terminal-style website created using HTML, CSS, and JavaScript.",
+        about: "This is a 1337-style terminal website created using HTML, CSS, and JavaScript.",
         projects: "Current projects: AI Assistant, Portfolio Website, Data Analysis Tool.",
         clear: ""
     };
@@ -72,7 +72,7 @@
         promptDiv.className = 'prompt';
 
         const span = document.createElement('span');
-        span.textContent = 'user@terminal:~$';
+        span.textContent = 'user@1337:~$';
 
         const input = document.createElement('input');
         input.type = 'text';
